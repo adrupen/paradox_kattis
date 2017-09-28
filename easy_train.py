@@ -1,37 +1,42 @@
 import sys
 
-def main()
+def main():
 	
-	capacity = sys.stdin.read() # Capacity
-	n = sys.stdin.read()		# Number of stops
+	first_row = sys.stdin.readline().split()
+	capacity = int(first_row[0]) 	# Capacity
+	n = int(first_row[1])			# Number of stops
 
 	currently_in_train = 0
 	possible = True
 
-	for line in sys.stdin:
-		stop = line.split()
+	for i in range(n):
+		stop = sys.stdin.readline().split()
 		currently_in_train -= int(stop[0])
 
 		if currently_in_train < 0:
 			possible = False
-			break
 
 		currently_in_train += int(stop[1])
 
 		if currently_in_train > capacity:
 			possible = False
-			break
 
 		if int(stop[2]) > 0:
 			if currently_in_train != capacity:
 				possible = False
-				break
+
+		if i == n-1:
+			if int(stop[2]) > 0:
+				possible = False
+
+
+	if currently_in_train != 0:
+		possible = False
 
 	if possible:
 		print("possible")
-	else
+	else:
 		print("impossible")
-
 
 
 if __name__ == "__main__":
