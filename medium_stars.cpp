@@ -47,6 +47,7 @@ void print_map(char* star_image, int m, int n){
 		}
 		cout << endl;
 	}
+	cout << endl;
 	return;
 }
 
@@ -56,8 +57,6 @@ int main(){
 	int num_stars[50] = {0};
 	int num_cases = -1;
 
-	// 1 < m,n < 100
-	// max is 100 * 100
 	char* star_image = new char[10000];
 
 	while(cin >> m >> n){
@@ -72,7 +71,7 @@ int main(){
 			}
 		}
 
-		print_map(star_image,m,n);
+		//print_map(star_image,m,n);
 
 		// Extract Stars
 		for(int y = 0; y<m; y++){
@@ -80,7 +79,7 @@ int main(){
 				if(star_image[n * y + x] == '-'){
 					extract_star(star_image, n * y + x, x, y, n, m);
 					num_stars[num_cases]++;
-					print_map(star_image, m, n);
+					//print_map(star_image, m, n);
 				}
 			}
 		}	
